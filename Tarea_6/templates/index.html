@@ -1,0 +1,129 @@
+
+{% extends "base.html" %}
+
+{% block title %}Mi Biblioteca{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mb-4">📚 Mi Biblioteca Personal</h1>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        Agregar un nuevo libro
+    </div>
+
+    <div class="card-body">
+        <form action="{{ url_for('agregar') }}" method="POST">
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Título</label>
+                    <input type="text" name="titulo" class="form-control"
+                           required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Autor</label>
+                    <input type="text" name="autor" class="form-control"
+                           required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Género</label>
+                    <input type="text" name="genero" class="form-control"
+                           required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Estado de lectura</label>
+                    <select name="estado" class="form-select" required>
+                        <option value="">Selecciona un estado</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Leyendo">Leyendo</option>
+                        <option value="Leído">Leído</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Agregar libro
+            </button>
+
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+        Mis libros registrados
+    </div>
+
+    <div class="card-body">
+
+        <form action="{{ url_for('inicio') }}" method="GET"
+              class="d-flex gap-2 mb-4">
+
+            <input type="text" name="buscar" class="form-control"
+                   placeholder="Buscar por título, autor o género..."
+                   value="{{ request.args.get('buscar', '') }}">
+
+            <button class="btn btn-success" type="submit">
+                Buscar
+            </button>
+
+            <a href="/" class="btn btn-secondary">Limpiar</a>
+        </form>
+
+        {% if libros %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Género</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for libro in libros %}
+                    <tr>
+                        <td>{{ libro.titulo }}</td>
+                        <td>{{ libro.autor }}</td>
+                        <td>{{ libro.genero }}</td>
+                        <td>{{ libro.estado }}</td>
+
+                        <td>
+                            <a href="{{ url_for('editar', libro_id=libro.id) }}"
+                               class="btn btn-warning btn-sm">
+                                Editar
+                            </a>
+
+                            <form action="{{ url_for('eliminar', libro_id=libro.id) }}"
+                                  method="POST" class="d-inline"
+                                  onsubmit="return confirm('¿Eliminar este libro?')">
+
+                                <button type="submit"
+                                        class="btn btn-danger btn-sm">
+                                    Eliminar
+                                </button>
+
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <p class="text-center text-muted">
+                No hay libros registrados todavía.
+            </p>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

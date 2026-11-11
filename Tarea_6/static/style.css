@@ -1,0 +1,163 @@
+/* Fondo general */
+body {
+    background-color: #fff8f5;
+    font-family: 'Arial', sans-serif;
+    color: #66515b;
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #e9a6b7 !important;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* Título principal */
+h1 {
+    color: #c87591;
+    font-weight: bold;
+}
+
+/* Tarjetas */
+.card {
+    border: 2px solid #f6dce3;
+    border-radius: 18px;
+    background-color: #fffdfb;
+    overflow: hidden;
+}
+
+/* Encabezados de tarjetas */
+.card-header {
+    background-color: #f5c6d2 !important;
+    color: #79515e !important;
+    font-weight: bold;
+    padding: 15px;
+}
+
+/* Botón principal */
+.btn-primary {
+    background-color: #e9a6b7;
+    border-color: #e9a6b7;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #d88da4;
+    border-color: #d88da4;
+}
+
+/* Botón de búsqueda */
+.btn-success {
+    background-color: #e9cf83;
+    border-color: #e9cf83;
+    color: #66552d;
+}
+
+.btn-success:hover {
+    background-color: #d8bd70;
+    border-color: #d8bd70;
+    color: #514322;
+}
+
+/* Botón editar */
+.btn-warning {
+    background-color: #f6df9e;
+    border-color: #f6df9e;
+    color: #66552d;
+}
+
+.btn-warning:hover {
+    background-color: #edcf7e;
+    border-color: #edcf7e;
+}
+
+/* Botón eliminar */
+.btn-danger {
+    background-color: #df91a4;
+    border-color: #df91a4;
+}
+
+.btn-danger:hover {
+    background-color: #cb748b;
+    border-color: #cb748b;
+}
+
+/* Botón secundario */
+.btn-secondary {
+    background-color: #cbbbc1;
+    border-color: #cbbbc1;
+}
+
+/* Campos de formulario */
+.form-control,
+.form-select {
+    border: 1px solid #edcbd5;
+    border-radius: 10px;
+    background-color: #fffafa;
+    color: #66515b;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #e9a6b7;
+    box-shadow: 0 0 0 0.2rem rgba(233, 166, 183, 0.2);
+}
+
+/* Etiquetas */
+.form-label {
+    color: #a7657b;
+    font-weight: bold;
+}
+
+/* Tabla */
+.table {
+    vertical-align: middle;
+    --bs-table-striped-bg: #fff1f3;
+    --bs-table-hover-bg: #fff5d9;
+    color: #66515b;
+}
+
+.table thead {
+    background-color: #f6df9e;
+    color: #66552d;
+}
+
+/* Alertas */
+.alert-success {
+    background-color: #fff1cf;
+    border-color: #f1dda5;
+    color: #80652c;
+}
+
+.alert-danger {
+    background-color: #ffe5e9;
+    border-color: #f3c1ce;
+    color: #a34e69;
+}
+
+.alert-warning {
+    background-color: #fff5d9;
+    border-color: #f3dfa7;
+    color: #80652c;
+}
+
+/* Botones generales */
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* Adaptación a móviles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+}
