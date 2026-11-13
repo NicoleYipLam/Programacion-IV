@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Mi Biblioteca{% endblock %}
+
+{% block content %}
+
+<h2>Mi biblioteca personal</h2>
+
+<p>Organiza y administra tus libros.</p>
+
+<a href="{{ url_for('agregar') }}" class="boton">
+    Agregar libro
+</a>
+
+<form action="{{ url_for('buscar') }}" method="GET">
+
+    <label for="q">Buscar libros</label>
+
+    <input
+        type="text"
+        id="q"
+        name="q"
+        placeholder="Escribe un título o autor..."
+    >
+
+    <button type="submit">Buscar</button>
+
+</form>
+
+{% if libros %}
+
+    <h3>Mis libros registrados</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Año</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for libro in libros %}
+            <tr>
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.autor }}</td>
+                <td>{{ libro.anio }}</td>
+
+                <td>
+                    <a href="{{ url_for('editar', id=libro.id) }}">
+                        Editar
+                    </a>
+
+                    <a href="{{ url_for('eliminar', id=libro.id) }}">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% else %}
+
+    <h3>Mis libros</h3>
+
+    <p>Todavía no tienes libros registrados.</p>
+
+{% endif %}
+
+{% endblock %}
+

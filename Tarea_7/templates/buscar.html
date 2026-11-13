@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+
+{% block title %}Buscar libros{% endblock %}
+
+{% block content %}
+
+<h2>Buscar libros</h2>
+
+<p>Encuentra un libro por su título o autor.</p>
+
+<form action="{{ url_for('buscar') }}" method="GET">
+
+    <label for="q">Título o autor</label>
+
+    <input
+        type="text"
+        id="q"
+        name="q"
+        placeholder="Escribe lo que deseas buscar..."
+        value="{{ termino }}"
+    >
+
+    <button type="submit">Buscar</button>
+
+</form>
+
+{% if termino %}
+
+    <h3>Resultados de búsqueda</h3>
+
+    {% if resultados %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Año</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for libro in resultados %}
+                <tr>
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.autor }}</td>
+                    <td>{{ libro.anio }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+
+        <p>No se encontraron libros con esa búsqueda.</p>
+
+    {% endif %}
+
+{% endif %}
+
+<a href="{{ url_for('index') }}">Volver al inicio</a>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block title %}Editar libro{% endblock %}
+
+{% block content %}
+
+<h2>Editar libro</h2>
+
+<p>Modifica la información del libro seleccionado.</p>
+
+<form method="POST">
+
+    <label for="titulo">Título del libro</label>
+    <input
+        type="text"
+        id="titulo"
+        name="titulo"
+        value="{{ libro.titulo }}"
+        required
+    >
+
+    <label for="autor">Autor</label>
+    <input
+        type="text"
+        id="autor"
+        name="autor"
+        value="{{ libro.autor }}"
+        required
+    >
+
+    <label for="anio">Año de publicación</label>
+    <input
+        type="number"
+        id="anio"
+        name="anio"
+        value="{{ libro.anio }}"
+        required
+    >
+
+    <button type="submit">Guardar cambios</button>
+
+    <a href="{{ url_for('index') }}">Cancelar</a>
+
+</form>
+
+{% endblock %}

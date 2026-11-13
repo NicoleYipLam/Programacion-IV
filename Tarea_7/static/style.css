@@ -1,0 +1,164 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFF9F5;
+    color: #69535B;
+}
+
+/* Navegación */
+
+header {
+    background-color: #F7DDE5;
+    padding: 20px 8%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+nav a {
+    text-decoration: none;
+    color: #69535B;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #B66F8A;
+}
+
+/* Contenido principal */
+
+main {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #795B68;
+}
+
+h3 {
+    margin: 20px 0 10px;
+}
+
+p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Formularios */
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 18px;
+    border: 1px solid #E8D5DC;
+    border-radius: 7px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #D99CB2;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Botones */
+
+button, .boton {
+    background-color: #F2D3DF;
+    color: #694D58;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+button:hover, .boton:hover {
+    background-color: #EBC0D0;
+}
+
+/* Tablas */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #F7DDE5;
+    padding: 13px;
+    text-align: left;
+}
+
+td {
+    padding: 13px;
+    border-bottom: 1px solid #F0E5E9;
+}
+
+td a {
+    color: #A66D83;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+/* Mensajes */
+
+.mensaje {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+}
+
+.success {
+    background-color: #FFF0C9;
+    color: #786344;
+}
+
+.error {
+    background-color: #F7DDE5;
+    color: #8C5268;
+}
+
+/* Pie de página */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #A18B94;
+    font-size: 13px;
+}
+/* Espacio entre agregar libro y buscar */
+.boton {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Separación del formulario de búsqueda */
+main form {
+    margin-top: 15px;
+}

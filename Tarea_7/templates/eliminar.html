@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% block title %}Eliminar libro{% endblock %}
+
+{% block content %}
+
+<h2>Eliminar libro</h2>
+
+<p>¿Estás segura de que deseas eliminar este libro?</p>
+
+<div class="confirmacion">
+
+    <h3>{{ libro.titulo }}</h3>
+
+    <p>Autor: {{ libro.autor }}</p>
+
+    <p>Año de publicación: {{ libro.anio }}</p>
+
+    <form method="POST">
+
+        <button type="submit">Sí, eliminar libro</button>
+
+        <a href="{{ url_for('index') }}">Cancelar</a>
+
+    </form>
+
+</div>
+
+{% endblock %}
