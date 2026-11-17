@@ -1,0 +1,22 @@
+1. Clasificacion por Tipos
+a) ¿Cuantos Pokemon de tipo fuego existen en la region de Kanto?
+Respuesta: Existen 12 Pokemon de tipo fuego en la primera generacion (Kanto).
+Nombres: Charmander, Charmeleon, Charizard, Vulpix, Ninetales, Growlithe, Arcanine, Ponyta, Rapidash, Magmar, Flareon y Moltres.
+b) ¿Cuales son los nombres de los Pokemon tipo agua con una altura mayor a 10?
+Respuesta: La PokeAPI mide la altura en decimetros (10 dm = 1 metro). Hay decenas de Pokemon de agua que superan esta medida (como Blastoise, Tentacruel, Gyarados, Lapras, Vaporeon, etc.). El script que ejecutaste imprime la lista completa devuelta por la API para esta condicion.
+2. Evoluciones
+a) Selecciona un Pokemon inicial y describe su cadena evolutiva completa.
+Respuesta (Ejemplo con Bulbasaur):
+Bulbasaur -> Ivysaur -> Venusaur.
+b) ¿Que Pokemon de tipo electrico no tienen evoluciones?
+Respuesta: Son aquellos Pokemon de etapa unica (que no evolucionan de nadie ni tienen evoluciones posteriores). Ejemplos notables de tipo electrico son Pachirisu, Rotom, Plusle, Minun, Emolga, Dedenne, Togedemaru y Morpeko.
+3. Estadisticas de Batalla
+a) ¿Cual es el Pokemon con el mayor ataque base en la region de Johto?
+Respuesta: Tyranitar (ID 248), con un ataque base de 134.
+b) ¿Cual es el Pokemon con la velocidad mas alta que no sea legendario?
+Respuesta: Ninjask, con una velocidad base de 160 (superando a otros rapidos como Electrode o Accelgor, y excluyendo a legendarios como Regieleki que tiene 200).
+4. Extras
+a) ¿Cual es el habitat mas comun entre los Pokemon de tipo planta?
+Respuesta: El habitat mas comun suele ser "grassland" (pradera) o "forest" (bosque), ya que la gran mayoria de los Pokemon de este tipo se ubican en zonas de vegetacion y bosques dentro de los registros de especies de la API.
+b) ¿Que Pokemon tiene el menor peso registrado en toda la API?
+Respuesta: Hay varios Pokemon que comparten el peso minimo registrado de 1 hg (0.1 kg). Entre los mas conocidos se encuentran Gastly, Haunter, Flabebe, Cosmog y Kartana.
