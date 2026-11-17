@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca Cliente - Tarea 10</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFFDF0;
+            color: #4A4A4A;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .contenedor {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            padding: 35px;
+            border-radius: 15px;
+            border: 3px solid #F8C8DC;
+            box-shadow: 0 8px 20px rgba(248, 200, 220, 0.35);
+        }
+        h1 {
+            color: #C76D8E;
+            text-align: center;
+            border-bottom: 2px solid #FFF3B0;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+        h3 {
+            color: #B55B7C;
+            margin-top: 25px;
+        }
+        .alerta {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .alerta.exito {
+            background-color: #FFF3B0;
+            color: #6E5D1A;
+            border: 1px solid #E6D275;
+        }
+        .alerta.error {
+            background-color: #FFE4E9;
+            color: #B02A47;
+            border: 1px solid #F4A6C1;
+        }
+        .formulario {
+            background-color: #FFF9D6;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #F3E5AB;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        input[type="text"], input[type="number"] {
+            flex: 1;
+            min-width: 140px;
+            padding: 10px 12px;
+            border: 2px solid #F8C8DC;
+            border-radius: 8px;
+            outline: none;
+            background-color: #FFFFFF;
+            color: #4A4A4A;
+        }
+        input:focus {
+            border-color: #E08EAB;
+        }
+        button.btn-guardar {
+            background-color: #F4A6C1;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button.btn-guardar:hover {
+            background-color: #E08EAB;
+        }
+        ul.lista-libros {
+            list-style: none;
+            padding: 0;
+        }
+        ul.lista-libros li {
+            background-color: #FFF5F8;
+            border-left: 5px solid #F4A6C1;
+            margin-bottom: 12px;
+            padding: 15px 20px;
+            border-radius: 8px;
+        }
+        .fila-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-libro strong {
+            color: #8C3B58;
+            font-size: 1.05em;
+        }
+        .anio {
+            background-color: #FFF3B0;
+            color: #7A6B29;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-left: 8px;
+            font-weight: bold;
+        }
+        .acciones {
+            display: flex;
+            gap: 8px;
+        }
+        button.btn-editar {
+            background-color: #FFF3B0;
+            color: #7A6B29;
+            border: 1px solid #E6D275;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button.btn-eliminar {
+            background-color: #FFE4E9;
+            color: #C94A6A;
+            border: 1px solid #F4A6C1;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .form-editar {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #F4A6C1;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .vacio {
+            text-align: center;
+            color: #888888;
+            font-style: italic;
+            background-color: #FFFDF0 !important;
+            border-left: 5px solid #F3E5AB !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Mi Biblioteca Personal</h1>
+
+        {% with mensajes = get_flashed_messages(with_categories=true) %}
+            {% if mensajes %}
+                {% for categoria, mensaje in mensajes %}
+                    <div class="alerta {{ categoria }}">{{ mensaje }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <h3>Agregar nuevo libro</h3>
+        <form class="formulario" action="/agregar" method="POST">
+            <input type="text" name="titulo" placeholder="Titulo del libro" required>
+            <input type="text" name="autor" placeholder="Autor" required>
+            <input type="number" name="anio" placeholder="Anio" value="2026" required>
+            <button type="submit" class="btn-guardar">Guardar Libro</button>
+        </form>
+
+        <h3>Lista de Libros</h3>
+        <ul class="lista-libros">
+            {% for libro in libros %}
+                <li>
+                    <div class="fila-superior">
+                        <div class="info-libro">
+                            <strong>{{ libro.titulo }}</strong> - {{ libro.autor }}
+                            <span class="anio">{{ libro.anio }}</span>
+                        </div>
+                        <div class="acciones">
+                            <form action="/eliminar/{{ libro.id }}" method="POST" style="margin: 0;">
+                                <button type="submit" class="btn-eliminar">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <form class="form-editar" action="/editar/{{ libro.id }}" method="POST">
+                        <input type="text" name="titulo" value="{{ libro.titulo }}" required>
+                        <input type="text" name="autor" value="{{ libro.autor }}" required>
+                        <input type="number" name="anio" value="{{ libro.anio }}" required>
+                        <button type="submit" class="btn-editar">Actualizar</button>
+                    </form>
+                </li>
+            {% else %}
+                <li class="vacio">No hay libros registrados o la API esta desconectada.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
